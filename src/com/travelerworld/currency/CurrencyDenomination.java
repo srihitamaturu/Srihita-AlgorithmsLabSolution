@@ -13,17 +13,24 @@ public class CurrencyDenomination {
 
     public void sortDenominations() {
         int left = 0;
-        int right = currencyDenominations.length;
+        int right = currencyDenominations.length - 1;
         sort(currencyDenominations, left, right);
-        System.out.println(currencyDenominations);
+    }
+
+    public void printCurrencies() {
+        String currencies = "";
+        for (int i = 0; i < currencyDenominations.length; i++) {
+            currencies = currencies + currencyDenominations[i] + " ";
+        }
+        System.out.println(currencies);
     }
 
     private void sort(int[] denominations, int left, int right) {
         if (left < right) {
             int mid = (left + right) / 2;
-            sort(currencyDenominations, left, mid);
-            sort(currencyDenominations, mid + 1, right);
-            merge(currencyDenominations, left, mid, right);
+            sort(denominations, left, mid);
+            sort(denominations, mid + 1, right);
+            merge(denominations, left, mid, right);
         }
     }
 
@@ -34,9 +41,8 @@ public class CurrencyDenomination {
         int[] rightArray = new int[n2];
         for (int i = 0; i < n1; i++)
             leftArray[i] = denominations[left + i];
-
-        for (int i = 0; i < n1; i++)
-            rightArray[i] = denominations[mid + 1 + i];
+        for (int j = 0; j < n2; j++)
+            rightArray[j] = denominations[mid + 1 + j];
         int i = 0, j = 0;
         int k = left;
         while (i < n1 && j < n2) {

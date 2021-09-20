@@ -54,6 +54,7 @@ public class TravelerCurrencyDriver {
         CurrencyDenomination currencyDenomination = new CurrencyDenomination();
         currencyDenomination.setCurrencyDenominations(denominations);
         currencyDenomination.sortDenominations();
+        currencyDenomination.printCurrencies();
 
         //Process payable amount
         HashMap<Integer, Integer> requiredCurrencyDenominations = CurrencyDenominationProcessor.processRequiredAmount(amountPayable, currencyDenomination);
